@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="title_transparent_black">#22000000</color>
+    <color name="light_black">#141414</color>
+    <color name="line_and_outline_grey">#d9d9d9</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="main_color">#FA7C20</color>
+    <color name="gray">#333333</color>
+    <color name="colorDark">#808080</color>
+    <color name="colorWhite">#cacaca</color>
+    <color name="colorGray">#EFEFEF</color>
+    <color name="window_background">#FFF5F5F5</color>
+
+    <color name="tran0">#00000000</color>
+
+    <color name="tran">#0F001111</color>
+    <color name="white">#fff</color>
+
+    <color name="leftColor">#a1de89</color>
+    <color name="rightColor">#f7e494</color>
+    <color name="rightBottomColor">#f7d194</color>
+    <color name="leftColorBottom">#208C59</color>
+    <color name="selectLeftColor">#1daf00</color>
+    <color name="selectRightColor">#f8935c</color>
+    <color name="xyColor">#999</color>
+    <color name="colorBlueBackground">#23c8be</color>
+    <color name="colorBlueContent">#9999ffff</color>
+    <color name="colorBlueBar">#a7e9e5</color>
+    <color name="colorHalfBlueBar">#88ffffff</color>
+    <color name="colorNodeListItem">#ffc805</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightGray">#666666</color>
+    <color name="colorTextBlack">#222222</color>
+    <color name="colorTestInfo">#999999</color>
+</resources>
