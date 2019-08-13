@@ -9,6 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:gravity="right"
     tools:showIn="@layout/activity_alarm">
 
     <RelativeLayout
@@ -109,4 +110,12 @@
         android:gravity="right"
         android:numColumns="7"/>
 
+    <Button 
+        android:id="@+id/btn_dynamic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="灵活打卡"/>
 </LinearLayout>

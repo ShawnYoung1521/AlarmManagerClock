@@ -3,10 +3,12 @@
 package com.example.aaaaaaaa;
 
 import java.util.List;
+import java.util.Random;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.KeyguardManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
@@ -19,6 +21,7 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Vibrator;
 import android.util.Log;
@@ -29,10 +32,12 @@ import android.widget.Toast;
 
 
 public class AlarmAlertActivity extends Activity {
+    private AlarmsSetting alarmsSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        alarmsSetting = new AlarmsSetting(getApplicationContext());
         Log.e(">>>>>>>>", "oncreate");
         requestWindowFeature(android.view.Window.FEATURE_NO_TITLE);
         final Window win = getWindow();
@@ -40,16 +45,35 @@ public class AlarmAlertActivity extends Activity {
         wakeUpAndUnlock();
         int type = getIntent().getIntExtra("type", 0);
         if (type == AlarmsSetting.ALARM_SETTING_TYPE_IN) {
+            finish();
             openDing("com.alibaba.android.rimet",getApplicationContext());
         } else if (type == AlarmsSetting.ALARM_SETTING_TYPE_OUT) {
+            finish();
             openDing("com.alibaba.android.rimet",getApplicationContext());
         } else {
             finish();
         }
         notificationVibrator();
         notificationRing();
+        AlarmOpreation.cancelAlert(getApplicationContext(),  AlarmsSetting.ALARM_SETTING_TYPE_IN);
+        AlarmOpreation.enableAlert(getApplicationContext(),  AlarmsSetting.ALARM_SETTING_TYPE_IN, new AlarmsSetting(getApplicationContext()));
+        AlarmOpreation.cancelAlert(getApplicationContext(),  AlarmsSetting.ALARM_SETTING_TYPE_OUT);
+        AlarmOpreation.enableAlert(getApplicationContext(),  AlarmsSetting.ALARM_SETTING_TYPE_OUT, new AlarmsSetting(getApplicationContext()));
+        mHandler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				Intent intent= new Intent(Intent.ACTION_MAIN);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addCategory(Intent.CATEGORY_HOME);
+				startActivity(intent);
+				Log.i("md", "Home键触发");
+			}
+		}, 15000);
     }
     
+    
+    private Handler mHandler = new Handler();
     public static void openDing(String packageName, Context context) {
         PackageManager packageManager = context.getPackageManager();
         PackageInfo pi = null;

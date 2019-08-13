@@ -33,6 +33,7 @@ public class AlarmsSetting {
     public static final String ALARM_SETTING_NEXT_ALARM="alarm_next_alarm";
 
     public static final String ALARM_ALERT_ACTION = "com.kidcare.alarm_alert";
+    public static final String ALARM_SETTING_DYNAMIC = "ALARM_SETTING_DYNAMIC";
 
     private SharedPreferenceUtil spUtil;
 
@@ -54,6 +55,7 @@ public class AlarmsSetting {
     public void setVoice(boolean isShake) {
         spUtil.putBoolean(ALARM_SETTING_VOICE, isShake);
     }
+    
     //入园
     public boolean isInEnble() {
         return spUtil.getBoolean(ALARM_SETTING_IN_ENBLE , false);
@@ -126,4 +128,11 @@ public class AlarmsSetting {
     }
 
     public void setNextAlarm(long timestamp) {spUtil.putLong(ALARM_SETTING_NEXT_ALARM, timestamp);}
+    public int getDynamic() {
+        return spUtil.getInt(ALARM_SETTING_DYNAMIC);
+    }
+
+    public void setDynamic(int time) {
+        spUtil.putInt(ALARM_SETTING_DYNAMIC, time);
+    }
 }

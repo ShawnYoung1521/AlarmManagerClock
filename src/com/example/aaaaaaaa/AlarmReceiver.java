@@ -14,6 +14,7 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class AlarmReceiver  extends BroadcastReceiver {
     private AlarmsSetting alarmsSetting;
@@ -31,7 +32,6 @@ public class AlarmReceiver  extends BroadcastReceiver {
         }
 
         if(intent.getAction().equals(AlarmsSetting.ALARM_ALERT_ACTION) && type !=0) {
-
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日——HH时mm分ss秒SSS毫秒");
             Log.e("###########此次闹钟#######", "alarmsSetting.getNextAlarm()" + formatter.format(new Date(alarmsSetting.getNextAlarm())));
             Log.e("###########当前系统时间###", "System.currentTimeMillis()" + formatter.format(new Date(System.currentTimeMillis())));

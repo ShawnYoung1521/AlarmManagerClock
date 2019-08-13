@@ -1,14 +1,14 @@
 package com.example.aaaaaaaa;
 
-import java.util.Random;
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AlarmActivity extends Activity implements View.OnClickListener {
 
@@ -99,9 +99,37 @@ public class AlarmActivity extends Activity implements View.OnClickListener {
 		case R.id.set_out_time:
 			showTimePickerDialog(AlarmsSetting.ALARM_SETTING_TYPE_OUT);
 			break;
+		case R.id.btn_dynamic:
+			showSingSelect();
+			break;
 		}
 	}
-
+	/**
+     * 单选 dialog
+     */
+	private AlertDialog.Builder builder;
+	int choice;
+    private void showSingSelect() {
+        //默认选中第一个
+        final String[] items = {"5分钟", "15分钟", "25分钟", "35分钟"};
+        choice = alarmsSetting.getDynamic();
+        builder = new AlertDialog.Builder(this).setTitle("请选择时间范围")
+                .setSingleChoiceItems(items, choice, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        choice = i;
+                    }
+                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (choice != -1) {
+                            Toast.makeText(getApplicationContext(), "你选择了" + items[choice], Toast.LENGTH_LONG).show();
+                            alarmsSetting.setDynamic(choice);
+                        }
+                    }
+                });
+        builder.create().show();
+    }
 	public void showTimePickerDialog(final int type) {
 		TimePickerFragment timePicker = new TimePickerFragment();
 		if (type == AlarmsSetting.ALARM_SETTING_TYPE_IN) {
@@ -113,34 +141,21 @@ public class AlarmActivity extends Activity implements View.OnClickListener {
 		timePicker.setOnSelectListener(new TimePickerFragment.OnSelectListener() {
 			@Override
 			public void getValue(int hourOfDay, int minute) {
-				Random r = new Random();
-				int ran = r.nextInt(20);
-//				if (type == 1) { //上班
-//					if (minute>ran) {
-//						minute = minute - ran;
-//					}else{
-//						hourOfDay--;
-//						minute = 60-(ran-minute);
-//					}
-//				}else{ //下班
-//					if ((minute + ran) >= 60) {
-//						hourOfDay ++;
-//						minute = (minute + ran)- 60;
-//					}else{
-//						minute = minute+ran;
-//					}
-//				}
-				if (type == AlarmsSetting.ALARM_SETTING_TYPE_IN) {
-					alarmsSetting.setInHour(hourOfDay);
-					alarmsSetting.setInMinutes(minute);
-				} else {
-					alarmsSetting.setOutHour(hourOfDay);
-					alarmsSetting.setOutMinutes(minute);
-				}
-				setTime(hourOfDay, minute, type);
-				AlarmOpreation.cancelAlert(AlarmActivity.this, type);
-				AlarmOpreation.enableAlert(AlarmActivity.this, type, alarmsSetting);
+				setTime1(type,hourOfDay,minute);
 			}
 		});
+	}
+	
+	public void setTime1(int type,int hourOfDay, int minute){
+		setTime(hourOfDay, minute, type);
+		if (type == AlarmsSetting.ALARM_SETTING_TYPE_IN) {
+			alarmsSetting.setInHour(hourOfDay);
+			alarmsSetting.setInMinutes(minute);
+		} else {
+			alarmsSetting.setOutHour(hourOfDay);
+			alarmsSetting.setOutMinutes(minute);
+		}
+		AlarmOpreation.cancelAlert(AlarmActivity.this, type);
+		AlarmOpreation.enableAlert(AlarmActivity.this, type, alarmsSetting);
 	}
 }
