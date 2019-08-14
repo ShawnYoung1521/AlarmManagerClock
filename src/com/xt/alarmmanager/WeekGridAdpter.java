@@ -1,10 +1,4 @@
-/*
- *  autor：OrandNot
- *  email：orandnot@qq.com
- *  time: 2016 - 1 - 13
- *
- */
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.xy.alarmmanager.R;
 
 public class WeekGridAdpter extends BaseAdapter {
 

@@ -1,11 +1,4 @@
-/*
- *  autor：OrandNot
- *  email：orandnot@qq.com
- *  time: 2016 - 1 - 13
- *
- */
-
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

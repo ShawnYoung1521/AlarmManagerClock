@@ -1,6 +1,4 @@
-
-
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import java.util.List;
 import java.util.Random;

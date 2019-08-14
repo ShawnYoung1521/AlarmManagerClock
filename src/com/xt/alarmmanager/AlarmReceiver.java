@@ -1,11 +1,4 @@
-/*
- *  autor：OrandNot
- *  email：orandnot@qq.com
- *  time: 2016 - 1 - 14
- *
- */
-
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +15,7 @@ public class AlarmReceiver  extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         alarmsSetting = new AlarmsSetting(context);
         int type = intent.getIntExtra("type",0);
-        Log.e("#######################", "getRecevier_ACtion" + intent.getAction());
+//        Log.e("#######################", "getRecevier_ACtion" + intent.getAction());
 
         //如果已经设置闹钟w不可用，先拦截
         if(type==AlarmsSetting.ALARM_SETTING_TYPE_IN && !alarmsSetting.isInEnble()){

@@ -1,4 +1,4 @@
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +9,7 @@ import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.xy.alarmmanager.R;
 
 public class AlarmActivity extends Activity implements View.OnClickListener {
 
@@ -110,8 +111,7 @@ public class AlarmActivity extends Activity implements View.OnClickListener {
 	private AlertDialog.Builder builder;
 	int choice;
     private void showSingSelect() {
-        //默认选中第一个
-        final String[] items = {"5分钟", "15分钟", "25分钟", "35分钟"};
+        final String[] items = {"准时准点","5分钟", "15分钟", "25分钟", "35分钟"};
         choice = alarmsSetting.getDynamic();
         builder = new AlertDialog.Builder(this).setTitle("请选择时间范围")
                 .setSingleChoiceItems(items, choice, new DialogInterface.OnClickListener() {

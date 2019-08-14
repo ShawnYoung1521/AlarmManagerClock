@@ -1,11 +1,4 @@
-/*
- *  autor：OrandNot
- *  email：orandnot@qq.com
- *  time: 2016 - 1 - 14
- *
- */
-
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -50,25 +43,29 @@ public class AlarmOpreation {
 			minute=alarmsSetting.getOutMinutes();
 			dayOfweek=alarmsSetting.getOutDays();
 		}
-		Random r = new Random();
 		int rans = 0;
 		int ran = 0;
+		Random r = new Random();
 		switch (rantime) {
 		case 0:
-			rans=5;
-			ran = r.nextInt(5);
+			rans=0;
+			ran =0;
 			break;
 		case 1:
-			rans=15;
-			 ran = r.nextInt(15);
+			rans=5;
+			ran = r.nextInt(rans);
 			break;
 		case 2:
-			rans=25;
-			 ran = r.nextInt(25);
+			rans=15;
+			ran = r.nextInt(rans);
 			break;
 		case 3:
+			rans=25;
+			ran = r.nextInt(rans);
+			break;
+		case 4:
 			rans=35;
-			 ran = r.nextInt(35);
+			ran = r.nextInt(rans);
 			break;
 		}
 		if (type == 1) { //上班

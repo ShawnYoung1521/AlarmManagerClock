@@ -1,4 +1,4 @@
-package com.example.aaaaaaaa;
+package com.xt.alarmmanager;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -9,9 +9,6 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-/**
- * Created by Administrator on 2016/1/13.
- */
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
 
     OnSelectListener mOnTimeSetListener;

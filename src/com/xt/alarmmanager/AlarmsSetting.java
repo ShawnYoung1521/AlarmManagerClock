@@ -1,13 +1,4 @@
-
-/*
- *  autor：OrandNot
- *  email：orandnot@qq.com
- *  time: 2016 - 1 - 13
- *
- */
-
-package com.example.aaaaaaaa;
-
+package com.xt.alarmmanager;
 
 import android.content.Context;
 
@@ -56,7 +47,7 @@ public class AlarmsSetting {
         spUtil.putBoolean(ALARM_SETTING_VOICE, isShake);
     }
     
-    //入园
+    //上班
     public boolean isInEnble() {
         return spUtil.getBoolean(ALARM_SETTING_IN_ENBLE , false);
     }
@@ -89,7 +80,7 @@ public class AlarmsSetting {
         spUtil.putInt(ALARM_SETTING_IN_DAYSOFWEEK, days);
     }
 
-    //离园
+    //下班
     public boolean isOutEnble() {
         return spUtil.getBoolean(ALARM_SETTING_OUT_ENBLE, false);
     }
